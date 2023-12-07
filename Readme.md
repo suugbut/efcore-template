@@ -1,6 +1,6 @@
 ### Short Description
 
-This repo shows the "extreme" case in which
+This repo shows an "extreme" case in which
 entity model class, database context class, migration class,
 user-secrets data and migration startup each is put in a separate project.
 
