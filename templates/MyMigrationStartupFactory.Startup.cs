@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Reflection;
+
 
 namespace MyMigrationStartupFactory;
 
@@ -13,6 +13,15 @@ public class Startup : IDesignTimeDbContextFactory<MyContext.TheContext>
         IConfigurationRoot Configuration = icb
                                             .AddUserSecrets<MyUserSecret.Empty>()
                                             .Build();
+
+
+        // Accessing a strongly typed configuration object
+        IConfigurationSection ics = Configuration.GetSection(nameof(MyConfiguration.TheConfiguration));
+        var tc = new MyConfiguration.TheConfiguration();
+        ics.Bind(tc);
+        Console.WriteLine(tc);
+
+
                                             
         var providerName = "SqlServer";
         // var providerName = "Sqlite";

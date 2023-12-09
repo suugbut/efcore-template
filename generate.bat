@@ -6,6 +6,7 @@ dotnet new classlib -o MyModel
 dotnet new classlib -o MyContext
 dotnet new classlib -o MyMigrationTarget
 dotnet new classlib -o MyMigrationStartupFactory
+dotnet new classlib -o MyConfiguration
 
 
 
@@ -47,7 +48,16 @@ del MyMigrationStartupFactory\Class1.cs
 copy templates\MyMigrationStartupFactory.Startup.cs MyMigrationStartupFactory\Startup.cs
 dotnet add MyMigrationStartupFactory reference MyUserSecret
 dotnet add MyMigrationStartupFactory reference MyMigrationTarget
+dotnet add MyMigrationStartupFactory reference MyConfiguration
 dotnet add MyMigrationStartupFactory package Microsoft.EntityFrameworkCore.Design
+dotnet add MyMigrationStartupFactory package Microsoft.Extensions.Configuration.Binder
+
+
+
+REM MyConfiguration
+del MyConfiguration\Class1.cs
+copy templates\MyConfiguration.TheConfiguration.cs MyConfiguration\TheConfiguration.cs
+
 
 
 
@@ -58,3 +68,4 @@ dotnet sln add MyModel
 dotnet sln add MyContext
 dotnet sln add MyMigrationTarget
 dotnet sln add MyMigrationStartupFactory
+dotnet sln add MyConfiguration
